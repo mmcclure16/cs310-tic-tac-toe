@@ -22,7 +22,7 @@ public class TicTacToeView {
            Return as a TicTacToeMove object. */
         
         // INSERT YOUR CODE HERE
-        System.out.println("Enter your coordinate for rows: ");
+        System.out.println("Enter the row and column numbers, separated by a space: ");
         int rowChoice = keyboard.nextInt();
         int colChoice = keyboard.nextInt();
 
