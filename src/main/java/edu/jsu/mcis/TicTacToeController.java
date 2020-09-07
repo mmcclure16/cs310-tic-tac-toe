@@ -1,5 +1,7 @@
 package edu.jsu.mcis;
 
+import java.awt.event.ActionEvent;
+
 public class TicTacToeController {
 
     private final TicTacToeModel model;
@@ -13,6 +15,19 @@ public class TicTacToeController {
 
         model = new TicTacToeModel(width);
         view = new TicTacToeView();
+        
+    }
+
+    public String getMarkAsString(int row, int col){
+        return (model.getMark(row, col).toString());
+    }
+
+    public TicTacToeView getView(){
+        return view;
+    }
+
+    public void actionPerformed(ActionEvent event){
+        // INSERT YOUR CODE HERE
         
     }
 
