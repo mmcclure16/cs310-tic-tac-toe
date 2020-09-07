@@ -22,8 +22,13 @@ public class TicTacToeView {
            Return as a TicTacToeMove object. */
         
         // INSERT YOUR CODE HERE
+        System.out.println("Enter your coordinate for rows: ");
+        int rowChoice = keyboard.nextInt();
+        int colChoice = keyboard.nextInt();
 
-        return null; // remove this line later!
+        keyboard.reset();
+
+        return new TicTacToeMove(rowChoice, colChoice);
 
     }
 
