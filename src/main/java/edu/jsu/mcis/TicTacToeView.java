@@ -1,6 +1,7 @@
 package edu.jsu.mcis;
 
 import java.awt.*;
+import java.awt.event.ActionListener;
 import javax.swing.*;
 
 public class TicTacToeView extends JPanel {
@@ -26,7 +27,7 @@ public class TicTacToeView extends JPanel {
             for (int col = 0; col < width; col++) {
                 
                 board[row][col] = new JButton(); 
-                board[row][col].addActionListener(controller);
+                board[row][col].addActionListener((ActionListener) controller);
                 board[row][col].setName("Square" + row + col);
                 board[row][col].setPreferredSize(new Dimension(64,64));
                 squaresPanel.add(board[row][col]);

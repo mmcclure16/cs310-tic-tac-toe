@@ -1,8 +1,10 @@
 package edu.jsu.mcis;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class TicTacToeController {
+public class TicTacToeController implements ActionListener {
 
     private final TicTacToeModel model;
     private final TicTacToeView view;
@@ -14,7 +16,7 @@ public class TicTacToeController {
         /* Initialize model, view, and width */
 
         model = new TicTacToeModel(width);
-        view = new TicTacToeView();
+        view = new TicTacToeView(this, width);
         
     }
 
@@ -28,10 +30,31 @@ public class TicTacToeController {
 
     public void actionPerformed(ActionEvent event){
         // INSERT YOUR CODE HERE
-        
+        JButton source = (JButton) event.getSource();
+        String name = source.getName();
+
+        String rc = name.replace("Square", "");
+        int row = Integer.parseInt(rc.charAt(0) + "");
+        int col = Integer.parseInt(rc.charAt(1) + "");
+
+        if (model.getMark(row, col).equals(TicTacToeModel.Mark.EMPTY)){
+            model.makeMark(row, col);
+        }
+
+        view.updateSquares();
+
+        TicTacToeModel.Result result = model.getResult();
+
+        if(result != TicTacToeModel.Result.NONE){
+            view.disableSquares();
+            view.showResult(result.toString());
+        }
+        else{
+            view.clearResult();
+        }
     }
 
-    public void start() {
+   // public void start() {
     
         /* MAIN LOOP (repeats until game is over) */
 
@@ -41,7 +64,7 @@ public class TicTacToeController {
            using the View's "showInputError()" if the move is invalid. */
 
         // INSERT YOUR CODE HERE
-        while (!model.isGameover()) {
+      /*  while (!model.isGameover()) {
             view.showBoard(model.toString());
 
             TicTacToeMove move = view.getNextMove(model.isXTurn());
@@ -50,13 +73,13 @@ public class TicTacToeController {
             if (!validMove) {
                 view.showInputError();
             }
-        }
+        }*/
         /* After the game is over, show the final board and the winner */
 
-        view.showBoard(model.toString());
+      //  view.showBoard(model.toString());
 
-        view.showResult(model.getResult().toString());
+      //  view.showResult(model.getResult().toString());
         
-    }
+   // }
 
 }
